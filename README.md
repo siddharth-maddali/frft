@@ -26,7 +26,7 @@ It is recalculated whenever the dimensions of the input array change.
    1. Currently selective transforms along user-defined dimensions are not implemented; transforms along all dimensions of the input array by default. 
 
 ## Tutorial
-Click [here](tutorial.ipynb) for a basic tutorial.
+[Here](https://github.com/siddharth-maddali/frft/blob/main/tutorial.ipynb) is a basic tutorial.
 
 In these tutorials, the FRFT will be simulated in the range $\alpha \in [0, 2]$. 
 This corresponds to the original signal ($\alpha = 0$) through to its Fourier transform ($\alpha = 1$), and ending with the inverted signal ($\alpha = 2$). 
