@@ -7,11 +7,11 @@
    1. 
    Created GPU implementation with PyTorch. 
    To use the GPU module like the CPU module, the following changes need to be made.  
-       * Module import: 
+       - Module import: 
        ```python
        import frft_gpu as frft
        ``` 
-       * Conversion of the input array from `fftshift`ed numpy array to `fftshift`ed PyTorch array. 
+       - Conversion of the input array from `fftshift`ed numpy array to `fftshift`ed PyTorch array. 
        See [tutorial](https://nbviewer.org/github/siddharth-maddali/frft/blob/main/tutorial.ipynb) for details. 
    
    2.
