@@ -1,6 +1,23 @@
 # `frft`: Multi-dimensional fractional Fourier transform in Python
 <img src="WavePropagation.gif">
 
+# CHANGELOG
+
+## May 24 2022
+   1. 
+   Created GPU implementation with PyTorch. 
+   To use the GPU module like the CPU module, the following changes need to be made.  
+       * Module import: 
+       ```python
+       import frft_gpu as frft
+       ``` 
+       * Conversion of the input array from `fftshift`ed numpy array to `fftshift`ed PyTorch array. 
+       See [tutorial](https://nbviewer.org/github/siddharth-maddali/frft/blob/main/tutorial.ipynb) for details. 
+   
+   2.
+   Measured the runtimes in the tutorial more accurately. 
+   
+
 ## Introduction
 
 The fractional Fourier transform (FRFT) is a valuable signal processing tool used in optics, physics, and radar engineering. 
@@ -26,7 +43,7 @@ It is recalculated whenever the dimensions of the input array change.
    1. Currently selective transforms along user-defined dimensions are not implemented; transforms along all dimensions of the input array by default. 
 
 ## Tutorial
-[Here](https://github.com/siddharth-maddali/frft/blob/main/tutorial.ipynb) is a basic tutorial.
+[Here](https://nbviewer.org/github/siddharth-maddali/frft/blob/main/tutorial.ipynb) is a basic tutorial.
 
 In these tutorials, the FRFT will be simulated in the range $\alpha \in [0, 2]$. 
 This corresponds to the original signal ($\alpha = 0$) through to its Fourier transform ($\alpha = 1$), and ending with the inverted signal ($\alpha = 2$). 
@@ -38,6 +55,6 @@ This corresponds to the original signal ($\alpha = 0$) through to its Fourier tr
 
 # References
 
-(<a id="cit-Ozaktas1996" href="#call-Ozaktas1996">Ozaktas, Arikan <em>et al.</em>, 1996</a>) Ozaktas Haldun M, Arikan Orhan, Kutay M Alper and Bozdagt Gozde, <em>Digital computation of the fractional Fourier transform</em>, **<em>IEEE Transactions on signal processing</em>**, vol. 44, number 9, pp. 2141--2150,  1996.
+(<a id="cit-Ozaktas1996" href="#call-Ozaktas1996">Ozaktas, Arikan <em>et al.</em>, 1996</a>) H.M. Ozaktas, O. Arikan, M.A. Kutay and G. Bozdagt, <em>Digital computation of the fractional Fourier transform</em>, **<em>IEEE Transactions on signal processing</em>**, vol. 44, number 9, pp. 2141--2150,  1996.
 
 
