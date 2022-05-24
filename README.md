@@ -12,7 +12,7 @@
        import frft_gpu as frft
        ``` 
        - Conversion of the input array from `fftshift`ed numpy array to `fftshift`ed PyTorch array. 
-       See [tutorial](https://nbviewer.org/github/siddharth-maddali/frft/blob/main/tutorial.ipynb) for details. 
+       See [tutorial](https://github.com/siddharth-maddali/frft/blob/main/tutorial.ipynb) for details. 
    
    2.
    Measured the runtimes in the tutorial more accurately. 
@@ -43,7 +43,7 @@ It is recalculated whenever the dimensions of the input array change.
    1. Currently selective transforms along user-defined dimensions are not implemented; transforms along all dimensions of the input array by default. 
 
 ## Tutorial
-[Here](https://nbviewer.org/github/siddharth-maddali/frft/blob/main/tutorial.ipynb) is a basic tutorial.
+[Here](https://github.com/siddharth-maddali/frft/blob/main/tutorial.ipynb) is a basic tutorial.
 
 In these tutorials, the FRFT will be simulated in the range $\alpha \in [0, 2]$. 
 This corresponds to the original signal ($\alpha = 0$) through to its Fourier transform ($\alpha = 1$), and ending with the inverted signal ($\alpha = 2$). 
