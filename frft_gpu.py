@@ -11,6 +11,12 @@ try:
 except: 
     from numpy.fft import fftshift as fftshift_c
 
+def fftn_n( arr ):
+    return fftn( arr, norm='ortho' )
+
+def ifftn_n( arr ):
+    return ifftn( arr, norm='ortho' )
+
 chirp = np.mgrid[ 0:1, 0:1, 0:1 ]
 chirp_arg = 1.j * np.pi * ftools.reduce( lambda x, y: x+y, chirp )
 chip_arg = torch.from_numpy( chirp_arg ).cuda() # puts the array on the GPU
@@ -19,7 +25,7 @@ pref0 = 'chirp = tuple( fftshift_c( this )**2 / this.shape[n] for n, this in enu
 suff0 = ' ] ) )'
 
 DoNothing = lambda x: x
-opdict = { 0:DoNothing, 1:fftn, 2:np.flip, 3:ifftn }
+opdict = { 0:DoNothing, 1:fftn_n, 2:np.flip, 3:ifftn_n }
 
 def frft( arr, alpha ):
     """
@@ -42,7 +48,7 @@ def frft_base( arr, alpha ):
     scale = np.sqrt( 1. - 1.j*cotphi ) / np.sqrt( np.prod( arr.shape ) )
     modulator = ChirpFunction( cotphi - cscphi )
     filtor = ChirpFunction( cscphi )
-    arr_frft = scale * modulator * ifftn( fftn( filtor ) * fftn( modulator * arr ) )
+    arr_frft = scale * modulator * ifftn_n( fftn_n( filtor ) * fftn_n( modulator * arr ) )
     return arr_frft
 
 def ChirpFunction( x ):
@@ -67,7 +73,7 @@ def RecalculateChirp( newshape ):
 def CanonicalOps( alpha ):
     alpha_0 = alpha % 4. 
     if alpha_0 < 0.5:
-        return[ ifftn, 1.+alpha_0 ]
+        return[ ifftn_n, 1.+alpha_0 ]
     flag = 0
     while alpha_0 > 1.5:
         alpha_0 -= 1.
